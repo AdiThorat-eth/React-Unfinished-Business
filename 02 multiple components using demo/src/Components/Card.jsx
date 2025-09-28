@@ -3,51 +3,41 @@ import React from "react";
 const Card = () => {
   const data = [
     {
-      image:
-        "https://images.unsplash.com/photo-1617791160536-598cf32026fb?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Mantra Care",
+      name: "I Will Survive",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit a99 fcuk ya!",
-      instock: true,
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum sapiente",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1758550445758-165aeab5b26e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
-      name: "Lights",
-      description: "Lorem ipsum dolor sit amet consectetur elit. Quas, porro!",
-      instock: false,
+      name: "Diamonds",
+      description:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit sapiente",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1755024324097-64832c4d2334?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D",
-      name: "Planet",
+      name: "Washing Machine Heart",
       description:
-        "Lorem dolor sit amet consectetur adipisicing elit. Quas, porro!",
-      instock: true,
+        "Lorem ipsum dolor sit amet consectetur. Yohohohoho zihahahaha",
     },
   ];
 
+  const onMouseClick = () => {
+    alert("Hey Hey you are pirating");
+  };
+
+  // handling events
+  // in arrow fxn () for implecite return (() => ())
+  // in arrow fxn {} for using function
+
   return (
-    <div className="w-full h-screen bg-zinc-200 flex items-center justify-center gap-10">
+    <div className="w-full h-screen bg-zinc-300 flex gap-4 items-center justify-center flex-row">
       {data.map((elem, idx) => (
-        <div
-          key={idx}
-          className="w-56 px-3 py-4 bg-zinc-100 rounded-lg overflow-hidden"
-        >
-          <div className="w-50 h-32 bg-zinc-300 rounded-lg overflow-hidden">
-            <img
-              src={elem.image}
-              alt=""
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="w-full px-3 py-4"></div>
-          <h2 className="text-center font-semibold">{elem.name}</h2>
-          <p>{elem.description}</p>
+        <div key={idx} className="song w-60 px-3 py-2 bg-sky-100 rounded">
+          <h3 className="font-semibold text-xl text-center">{elem.name}</h3>
+          <p className="text-sm mt-2">{elem.description}</p>
           <button
-            className={`px-4 py-1 ${elem.instock ? 'bg-violet-200' : 'bg-red-200'} rounded-full mt-3 text-sm`}
+            onClick={onMouseClick}
+            className="bg-violet-200 px-2 py-1 rounded-full mt-2 ml-15 text-xs font-semibold cursor-pointer"
           >
-            {elem.instock ? "In stock" : "Out of stock"}
+            Play Now!
           </button>
         </div>
       ))}
