@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [val, setVal] = useState({ name: "Abc", isRunner: true, marks: 11 });
-
+  const [val, setVal] = useState([1, 2, 3, 4, 5, 6]);
   return (
-    <div className="text-center text-3xl m-4">
-      <h1>name: {val.name}</h1>
-      {/* isRunner is boolean to use it in h1 we have to convert it into string */}
-      <h2>isRunner: {val.isRunner.toString()}</h2>
-      <h3>Marks: {val.marks}</h3>
+    <div className="p-2 text-center">
+      {val.map((item) => (
+        <h1>{item}</h1>
+      ))}
       <button
         onClick={() => {
-          setVal({ ...val, marks: val.marks + 1, isRunner: !val.isRunner });
+          setVal(() => {
+            return val.filter((item, idx) => 
+              idx != val.length - 1
+            );
+          });
         }}
-        className={`px-3 py-1 ${
-          val.isRunner ? "bg-sky-300" : "bg-red-300"
-        } rounded-full`}
+        className="px-5 py-2 bg-blue-200 rounded-full"
       >
-        change
+        Remove
       </button>
     </div>
   );
