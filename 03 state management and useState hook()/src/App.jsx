@@ -8,16 +8,10 @@ const App = () => {
         <h1>{item}</h1>
       ))}
       <button
-        onClick={() => {
-          setVal(() => {
-            return val.filter((item, idx) => 
-              idx != val.length - 1
-            );
-          });
-        }}
+        onClick={() => setVal(() => val.filter((item, idx) => idx != 2))}
         className="px-5 py-2 bg-blue-200 rounded-full"
       >
-        Remove
+        Click
       </button>
     </div>
   );
