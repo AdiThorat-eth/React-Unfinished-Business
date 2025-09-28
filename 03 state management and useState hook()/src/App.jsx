@@ -13,7 +13,9 @@ const App = () => {
         onClick={() => {
           setVal({ ...val, marks: val.marks + 1, isRunner: !val.isRunner });
         }}
-        className="px-3 py-1 bg-sky-200 rounded-full"
+        className={`px-3 py-1 ${
+          val.isRunner ? "bg-sky-300" : "bg-red-300"
+        } rounded-full`}
       >
         change
       </button>
