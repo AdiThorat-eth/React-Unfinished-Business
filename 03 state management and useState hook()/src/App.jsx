@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [val, setVal] = useState([1, 2, 3, 4, 5, 6]);
+  const [val, setVal] = useState([
+    { name: "Abc", age: 99 },
+    { name: "Ghi", age: 50 },
+    { name: "Xyz", age: 101 },
+  ]);
   return (
     <div className="p-2 text-center">
       {val.map((item) => (
-        <h1>{item}</h1>
+        <div>
+          <h1>Name: {item.name}</h1>
+          <h2>Age: {item.age}</h2>
+        </div>
       ))}
       <button
-        onClick={() => setVal([...val, 7])}
+        onClick={() =>
+          setVal(() =>
+            val.map((item) =>
+              item.name === "Ghi" ? { name: "Ghi", age: 26 } : item
+            )
+          )
+        }
         className="px-5 py-2 bg-blue-200 rounded-full"
       >
         Click
