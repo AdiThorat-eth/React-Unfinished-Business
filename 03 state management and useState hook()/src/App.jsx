@@ -8,7 +8,7 @@ const App = () => {
         <h1>{item}</h1>
       ))}
       <button
-        onClick={() => setVal(() => val.filter((item, idx) => idx != 2))}
+        onClick={() => setVal(() => val.filter((item) => item % 2 !== 0))}
         className="px-5 py-2 bg-blue-200 rounded-full"
       >
         Click
@@ -16,5 +16,5 @@ const App = () => {
     </div>
   );
 };
-
+// 20.9-28.28
 export default App;
