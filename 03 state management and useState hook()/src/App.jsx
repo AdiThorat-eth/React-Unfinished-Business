@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [val, setVal] = useState(12);
+  const [val, setVal] = useState({ name: "Abc", isRunner: true });
 
   return (
-    <div className=" h-screen w-full">
-      <h1 className="text-center text-5xl mt-5">{val}</h1>
-      <div className="flex item-center justify-center mt-5 h-full w-full">
-        <button
-          onClick={() => {
-            // setVal can also handle the function
-             
-            setVal((prev) => prev+1);
-          }}
-          className="h-15 w-30 bg-pink-200 text-2xl px-2 py-4 rounded-full"
-        >
-          Change
-        </button>
-      </div>
+    <div className="text-center text-3xl m-4">
+      <h1>name: {val.name}</h1>
+      {/* isRunner is boolean to use it in h1 we have to convert it into string */}
+      <h2>isRunner: {val.isRunner.toString()}</h2>
+      <button
+        onClick={() => {
+          setVal({ ...val, isRunner: !val.isRunner });
+        }}
+        className="px-3 py-1 bg-sky-200 rounded-full"
+      >
+        change
+      </button>
     </div>
   );
 };
