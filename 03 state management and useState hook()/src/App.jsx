@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [banned, setBanned] = useState(false);
+  const [val, setVal] = useState(12);
 
   return (
-    <div className="h-screen w-full">
-      {/*we cant directly write boolean in h1 so we have to convert it to String */}
-      <h1 className="text-5xl text-center mt-10">{banned.toString()}</h1>
-      <div className="flex justify-center item-center">
+    <div className=" h-screen w-full">
+      <h1 className="text-center text-5xl mt-5">{val}</h1>
+      <div className="flex item-center justify-center mt-5 h-full w-full">
         <button
           onClick={() => {
-            setBanned(!banned);
+            // setVal can also handle the function
+             
+            setVal((prev) => prev+1);
           }}
-          // In this we have given a fxn to onClick which will be executed by onClick and in that fxn will set setScore
-          className="px-4 py-2 bg-amber-200 mt-10 rounded-full text-3xl"
+          className="h-15 w-30 bg-pink-200 text-2xl px-2 py-4 rounded-full"
         >
-          change
+          Change
         </button>
       </div>
     </div>
