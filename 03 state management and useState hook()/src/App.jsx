@@ -8,7 +8,7 @@ const App = () => {
         <h1>{item}</h1>
       ))}
       <button
-        onClick={() => setVal(() => val.filter((item) => item % 2 !== 0))}
+        onClick={() => setVal([...val, 7])}
         className="px-5 py-2 bg-blue-200 rounded-full"
       >
         Click
