@@ -1,7 +1,7 @@
 import React from "react";
 
-const Card = ({ values }) => {
-  const { image, name, description } = values;
+const Card = ({ values, handleClick, index }) => {
+  const { image, name, description, friend } = values;
   return (
     <div>
       <div className="w-42 bg-zinc-300 rounded p-2 text-center">
@@ -11,10 +11,10 @@ const Card = ({ values }) => {
         <h1 className="text-3xl">{name}</h1>
         <p className="text-xl">{description}</p>
         <button
-          onClick={() => alert(`You added ${name} as a friend`)}
+          onClick={() => handleClick(index)}
           className="px-2 py-1 bg-violet-400 rounded-full font-semibold"
         >
-          Add Friend
+          {friend === true ? "friends" : "Add Friend"}
         </button>
       </div>
     </div>
