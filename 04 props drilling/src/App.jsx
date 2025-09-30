@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./Components/Card";
 
 const App = () => {
-  const data = [
+  const raw = [
     {
       name: "Brook",
       description: "Yohohoho",
@@ -33,13 +33,15 @@ const App = () => {
     },
   ];
 
-  const [realData, setRealData] = useState(data);
-  const handleFriendsButton = (cardIdx) => {
-    setRealData((prev) => {
+  const [data, setData] = useState(raw);
+  const handleClick = (changeCardIdx) => {
+    setData((prev) => {
       return prev.map((item, idx) => {
-        if (idx === cardIdx) {
-          return { ...item, friend: !item.friend };
-        }
+        if (idx == changeCardIdx)
+          return {
+            ...item,
+            friend: !item.friend,
+          };
         return item;
       });
     });
@@ -48,18 +50,12 @@ const App = () => {
   return (
     <div>
       <div className="w-full h-screen gap-4 flex items-center justify-center">
-        {realData.map((item, idx) => (
-          <Card
-            key={idx}
-            index={idx}
-            values={item}
-            handleClick={handleFriendsButton}
-          />
+        {data.map((item, idx) => (
+          <Card key={idx} index={idx} values={item} hClick={handleClick} />
         ))}
       </div>
     </div>
   );
 };
-
 export default App;
 // 20.11 38.18

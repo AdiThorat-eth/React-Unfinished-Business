@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ values, handleClick, index }) => {
+const Card = ({ values, index, hClick }) => {
   const { image, name, description, friend } = values;
   return (
     <div>
@@ -11,8 +11,12 @@ const Card = ({ values, handleClick, index }) => {
         <h1 className="text-3xl">{name}</h1>
         <p className="text-xl">{description}</p>
         <button
-          onClick={() => handleClick(index)}
-          className="px-2 py-1 bg-violet-400 rounded-full font-semibold"
+          onClick={() => {
+            hClick(index);
+          }}
+          className={`px-2 py-1 ${
+            friend == true ? "bg-rose-200" : "bg-violet-400"
+          } rounded-full font-semibold`}
         >
           {friend === true ? "friends" : "Add Friend"}
         </button>
