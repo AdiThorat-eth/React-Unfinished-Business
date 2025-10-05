@@ -19,7 +19,7 @@ const App = () => {
   //   console.log(val);
   // };
 
-  // using react-hook-form
+  // using react-hook-form //
   const { register, handleSubmit } = useForm();
 
   return (
