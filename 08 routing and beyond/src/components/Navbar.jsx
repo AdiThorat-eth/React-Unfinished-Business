@@ -8,6 +8,7 @@ const Navbar = () => {
         style={(e) => {
           return {
             color: e.isActive ? "red" : "",
+            fontStyle: e.isActive ? "italic" : "",
           };
         }}
         to="/"
