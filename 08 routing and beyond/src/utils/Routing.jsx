@@ -9,8 +9,13 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<Hero />} />
-      <Route path="/user" element={<User />} />
-      <Route path="/user/:name" element={<UserDetails />} />
+      {/* <Route path="/user" element={<User />} />
+      <Route path="/user/:name" element={<UserDetails />} /> */}
+
+      {/* to convert it into child route */}
+      <Route path="/user" element={<User />}>
+        <Route path="/user/:name" element={<UserDetails />} />
+      </Route>
       <Route path="/about" element={<About />} />
     </Routes>
   );

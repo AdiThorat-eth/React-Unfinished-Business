@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const User = () => {
   return (
@@ -9,7 +9,6 @@ const User = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores itaque
         fugit rem?
       </p> */}
-
       <div className="flex gap-2 mb-4 flex-col items-center">
         <Link
           to="/user/abc"
@@ -30,10 +29,14 @@ const User = () => {
           Ghi
         </Link>
       </div>
-
       <button className="px-4 py-2 bg-lime-300 rounded-full"> YO </button>
+
+      <hr />
+      <Outlet />
     </div>
   );
 };
 
 export default User;
+
+// outlet works like a placeholder. if the user component have a child then it will open in the outlet tag
