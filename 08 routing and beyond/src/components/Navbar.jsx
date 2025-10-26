@@ -18,9 +18,7 @@ const Navbar = () => {
       <NavLink
         className={(e) => {
           return [
-            e.isActive
-              ? "text-blue-500 italic underline decoration-dotted"
-              : "",
+            e.isActive ? "text-blue-500 underline decoration-dotted" : "",
           ];
         }}
         to="/user"
