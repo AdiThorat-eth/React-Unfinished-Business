@@ -27,7 +27,20 @@ const Navbar = () => {
       >
         User
       </NavLink>
-      <NavLink to="/about">About</NavLink>
+      <NavLink to="/about">
+        {(e) => {
+          return (
+            <span
+              className={[
+                e.isActive ? "text-amber-500" : "",
+                e.isActive ? "font-bold" : "",
+              ].join(" ")}
+            >
+              About
+            </span>
+          );
+        }}
+      </NavLink>
     </nav>
   );
 };
