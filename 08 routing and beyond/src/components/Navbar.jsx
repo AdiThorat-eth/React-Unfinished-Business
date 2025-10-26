@@ -15,7 +15,18 @@ const Navbar = () => {
       >
         Hero
       </NavLink>
-      <NavLink to="/user">User</NavLink>
+      <NavLink
+        className={(e) => {
+          return [
+            e.isActive
+              ? "text-blue-500 italic underline decoration-dotted"
+              : "",
+          ];
+        }}
+        to="/user"
+      >
+        User
+      </NavLink>
       <NavLink to="/about">About</NavLink>
     </nav>
   );
