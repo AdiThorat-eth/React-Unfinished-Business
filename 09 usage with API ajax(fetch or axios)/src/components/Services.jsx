@@ -11,7 +11,7 @@ const Services = () => {
       console.log("Services component unmounted");
     };
   }, []);
-  // dur to
+  // due to square bracket it will not re render the component it will update the component
 
   return (
     <div className="text-center m-10">

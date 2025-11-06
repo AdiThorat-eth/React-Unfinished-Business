@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Show = () => {
@@ -20,12 +20,16 @@ const Show = () => {
       .catch((err) => console.log(err)); // FIX 2: Correctly log 'err' instead of 'error'
   };
 
+  useEffect(() => {
+    getproduct();
+  }, []);
+
   return (
     <>
-      <button onClick={getproduct} className="p-2 bg-zinc-200 m-4 rounded">
+      {/* <button onClick={getproduct} className="p-2 bg-zinc-200 m-4 rounded">
         call products api
       </button>
-      <hr />
+      <hr /> */}
       <ul className="p-4">
         {products.length > 0 ? (
           products.map((p) => (
