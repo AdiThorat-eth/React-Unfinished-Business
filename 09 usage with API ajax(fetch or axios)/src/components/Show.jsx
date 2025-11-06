@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../utils/Axios";
 
 const Show = () => {
   // Variable names 'products' and 'setproducts' are maintained.
@@ -8,7 +8,7 @@ const Show = () => {
 
   // to get products
   const getproduct = () => {
-    const api = "https://fakestoreapi.com/products";
+    const api = "/products";
     // since it is promise we have to write ".then()"
 
     axios
