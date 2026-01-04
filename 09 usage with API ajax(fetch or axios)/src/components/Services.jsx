@@ -14,6 +14,7 @@ const Services = () => {
       .get(api)
       .then((users) => {
         // FIX 1: Set state with the fetched data, which is available in users.data
+        setUsers(users.data);
         console.log(users.data);
       })
       .catch((err) => console.log(err));
@@ -34,7 +35,7 @@ const Services = () => {
     <div className="text-center m-10">
       <h1>{first}</h1>
       <button
-        onClick={() => setfirst("Data has been changed")}
+        onClick={() => setFirst("Data has been changed")}
         className="p-2 bg-violet-200 rounded mb-4"
       >
         Change normal data
@@ -42,7 +43,7 @@ const Services = () => {
 
       <h1>{second}</h1>
       <button
-        onClick={() => setsecond("Large data has been changed")}
+        onClick={() => setSecond("Large data has been changed")}
         className="p-2 bg-lime-200 rounded"
       >
         Change large data
