@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <nav className="w-1/5 h-full bg-zinc-50 p-4 flex flex-col items-center">
       <a
-        className="py-3 px-5 border text-center border-blue-400 text-blue-400 rounded-lg mb-4 hover:bg-blue-400 hover:text-white transition-all w-full"
+        className="py-3 px-5 border text-center border-blue-400 text-blue-400 rounded-lg mb-4 hover:bg-blue-400 hover:text-white transition-all w-full mt-15"
         href="/create"
       >
         Add new product
