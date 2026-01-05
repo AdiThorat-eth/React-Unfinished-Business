@@ -1,32 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../Context/Context.jsx";
+import Loading from "./Loading.jsx";
 
 const Hero = () => {
-  return (
+  const { products } = useContext(ProductContext);
+
+  return products ? (
     <>
       <Navbar />
       <div
-        className="h-full w-4/5 p-5 flex flex-wrap content-start gap-2.5
+        className="h-full w-4/5 p-5 flex flex-wrap content-start gap-2
       "
       >
-        <Link
-          to="/details/1"
-          className="card p-2 border shadow rounded w-[26vh] h-[40vh] flex justify-center items-center flex-col"
-        >
-          <div
-            style={{
-              backgroundImage:
-                "url('https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png')",
-            }}
-            className="h-full w-full bg-cover bg-center mb-3 hover:scale-105 hover:cursor-pointer transition-all"
-          ></div>
-          <h1 className="hover:text-blue-500">Hello</h1>
-        </Link>
+        {products.map((product, index) => (
+          <Link
+            key={product.id}
+            to={`/details/${product.id}`}
+            className="card p-2 border shadow rounded w-[26vh] h-[40vh] flex justify-center items-center flex-col"
+          >
+            <div
+              style={{
+                backgroundImage: `url(${product.image})`,
+              }}
+              className="h-full w-full bg-contain bg-no-repeat bg-center mb-3 hover:scale-105 hover:cursor-pointer transition-all"
+            ></div>
+            <h1 className="hover:text-blue-500">{product.title}</h1>
+          </Link>
+        ))}
 
         {/* // */}
       </div>
     </>
+  ) : (
+    <Loading />
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Hero from "./Components/Hero.jsx";
-import Details from "./Details.jsx";
+import Details from "./Components/Details.jsx";
 
 const App = () => {
   return (
