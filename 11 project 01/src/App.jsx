@@ -15,3 +15,5 @@ const App = () => {
 };
 
 export default App;
+
+// making categories
