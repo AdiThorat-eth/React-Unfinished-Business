@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+html,
+body {
+  color: white;
+  background-color: oklch(21% 0.006 285.885);
+  /* Apply the font globally to the body */
+  font-family: var(--font-satoshi);
+}
+
+@theme {
+  /* Register the font utility */
+  --font-satoshi: "Satoshi", sans-serif;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Satoshi";
+    src: url("/fonts/Satoshi-Variable.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+  }
+}
