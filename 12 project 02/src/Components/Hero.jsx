@@ -59,7 +59,6 @@ const Hero = () => {
           )}
         </div>
       </div>
-      <div className="bg-red-200 h-20 w-full absolute bottom-0"></div>
     </div>
   );
 };
