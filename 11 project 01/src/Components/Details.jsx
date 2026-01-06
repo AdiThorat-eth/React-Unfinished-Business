@@ -1,23 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "../Context/axios.jsx";
-
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+// import axios from "../Context/axios.jsx";
+import Loading from "./Loading.jsx";
+import { ProductContext } from "../Context/Context.jsx";
 const Details = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+  const { products, setProducts } = useContext(ProductContext);
 
-  const getSingleProduct = async () => {
-    try {
-      const { data } = await axios.get(`/products/${id}`);
-      setProduct(data);
-    } catch (error) {
-      console.log("error");
-    }
-  };
+  const [product, setProduct] = useState(null);
+  const { id } = useParams();
+
+  // const getSingleProduct = async () => {
+  //   try {
+  //     const { data } = await axios.get(`/products/${id}`);
+  //     setProduct(data);
+  //   } catch (error) {
+  //     console.log("error");
+  //   }
+  // };
 
   useEffect(() => {
-    getSingleProduct();
-  }, [id]);
+    if (products) {
+      // Technical Fix: Match the specific id from the URL params
+      const singleProduct = products.find((p) => p.id == id);
+      setProduct(singleProduct);
+    }
+  }, [id, products]);
+
+  const ProductDeleteHandler = (id) => {
+    // 1. Create the new list excluding the deleted item
+    const updatedProductsList = products.filter((p) => p.id !== id);
+
+    // 2. Update the Context state so the change reflects everywhere
+    setProducts(updatedProductsList);
+
+    // 3. Update local storage to persist the deletion
+    localStorage.setItem("products", JSON.stringify(updatedProductsList));
+
+    // 4. Navigate back to Home
+    navigate("/");
+  };
 
   return (
     <div className="w-[70%] h-full m-auto p-[10%] flex items-center justify-center">
@@ -33,17 +55,23 @@ const Details = () => {
             <h3 className="text-lg italic">{product.category}</h3>
             <p>{product.description}</p>
             <div className="mt-2">
-              <Link className="text-lg px-2 py-2 border border-blue-900 text-blue-900 text-center rounded-lg mr-5">
+              <Link
+                to={`/edit/${product.id}`}
+                className="text-lg px-2 py-2 border border-blue-900 text-blue-900 text-center rounded-lg mr-5"
+              >
                 Edit
               </Link>
-              <Link className="text-lg px-2 py-2 border border-red-800 text-red-800 text-center rounded-lg">
+              <button
+                onClick={() => ProductDeleteHandler(product.id)}
+                className="text-lg px-2 py-2 border border-red-800 text-red-800 text-center rounded-lg"
+              >
                 Delete
-              </Link>
+              </button>
             </div>
           </div>
         </>
       ) : (
-        <div>Loading...</div>
+        <Loading />
       )}
     </div>
   );

@@ -22,13 +22,16 @@ const Hero = () => {
       console.log("error");
     }
   };
-
   useEffect(() => {
-    if (!filteredProducts || category == "undefined")
-      setfilteredProducts(products);
-    if (category != "undefined") getproductsCategory();
-  }, [category, products]);
-
+    // Check if category exists and is not the string "undefined"
+    if (!category || category === "undefined") {
+      setfilteredProducts(products); // Show all products
+    } else {
+      // Filter the original products array based on the category from URL
+      const filtered = products.filter((p) => p.category === category);
+      setfilteredProducts(filtered);
+    }
+  }, [category, products]); // Re-run whenever category or products list changes
   // console.log(filteredProducts);
   return products ? (
     <>

@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ProductContext } from "../Context/Context.jsx";
+import { nanoid } from "nanoid";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+  const navigate = useNavigate();
+
+  const { products, setProducts } = useContext(ProductContext);
+
   const [image, setimage] = useState("");
   const [title, settitle] = useState("");
   const [category, setcategory] = useState("");
@@ -9,13 +16,30 @@ const Create = () => {
 
   const AddProductHandler = (e) => {
     e.preventDefault();
+
+    if (
+      title.trim().length < 5 ||
+      category.trim().length < 3 ||
+      description.trim().length < 7 ||
+      !image.trim() ||
+      !price
+    ) {
+      alert("Fill all the fields");
+      return;
+    }
+
     const product = {
+      id: nanoid(), // nanoid to generate unique id (npm i nanoid)
       title,
       image,
       category,
       price,
       description,
     };
+    setProducts([...products, product]);
+    localStorage.setItem("products", JSON.stringify([...products, product]));
+    navigate("/");
+    // toast.success("New product is added");
     // console.log(product);
   };
 

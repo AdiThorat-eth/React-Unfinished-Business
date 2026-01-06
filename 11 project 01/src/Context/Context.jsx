@@ -4,19 +4,23 @@ import axios from "./axios.jsx";
 export const ProductContext = createContext();
 
 const Context = (props) => {
-  const [products, setProducts] = useState(null);
-  const getproducts = async () => {
-    try {
-      const { data } = await axios("/products");
-      setProducts(data);
-    } catch (error) {
-      console.log("error");
-    }
-  };
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem("products")) || []
+  );
 
-  useEffect(() => {
-    getproducts();
-  }, []);
+  // const getproducts = async () => {
+  //   try {
+  //     const { data } = await axios("/products");
+  //     setProducts(data);
+  //     localStorage.setItem("products", JSON.stringify(data));
+  //   } catch (error) {
+  //     console.log("error");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getproducts();
+  // }, []);
 
   return (
     <ProductContext.Provider value={{ products, setProducts }}>
