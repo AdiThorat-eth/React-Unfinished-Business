@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 // import axios from "../Context/axios.jsx";
 import Loading from "./Loading.jsx";
 import { ProductContext } from "../Context/Context.jsx";
+import { toast } from "react-toastify";
+
 const Details = () => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(ProductContext);
@@ -38,6 +40,7 @@ const Details = () => {
     localStorage.setItem("products", JSON.stringify(updatedProductsList));
 
     // 4. Navigate back to Home
+    toast.success("Product is deleted");
     navigate("/");
   };
 
