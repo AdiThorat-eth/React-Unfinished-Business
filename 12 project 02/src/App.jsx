@@ -5,6 +5,7 @@ import Stripes from "./Components/Stripes";
 import Products from "./Components/Products";
 import Marquees from "./Components/Marquees";
 import Cards from "./Components/Cards";
+import Footer from "./Components/Footer";
 
 const App = () => {
   return (
@@ -15,10 +16,10 @@ const App = () => {
       <Products />
       <Marquees />
       <Cards />
+      <Footer />
     </div>
   );
 };
 
 export default App;
 // 20.21-01.13.38
-// call to action
