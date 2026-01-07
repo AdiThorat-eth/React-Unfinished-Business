@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Stripes from "./Components/Stripes";
 import Products from "./Components/Products";
+import Marquees from "./Components/Marquees";
 
 const App = () => {
   return (
@@ -11,9 +12,11 @@ const App = () => {
       <Hero />
       <Stripes />
       <Products />
+      <Marquees />
     </div>
   );
 };
 
 export default App;
-// product comp
+// 20.21-01.13.38
+// marquee comp

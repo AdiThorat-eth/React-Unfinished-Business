@@ -6,6 +6,7 @@ body {
   background-color: oklch(21% 0.006 285.885);
   /* Apply the font globally to the body */
   font-family: var(--font-satoshi);
+  overflow-x: hidden;
 }
 
 @theme {
