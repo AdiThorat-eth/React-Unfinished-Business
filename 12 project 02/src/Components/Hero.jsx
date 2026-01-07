@@ -41,7 +41,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="w-full text-center mt-24">
+    <div className="w-full text-center mt-42">
       <div className="max-w-screen-xl mx-auto relative">
         <h1 className="text-[50vh] font-medium leading-none tracking-tight select-none">
           Work

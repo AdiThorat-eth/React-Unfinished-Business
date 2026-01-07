@@ -4,6 +4,7 @@ import Hero from "./Components/Hero";
 import Stripes from "./Components/Stripes";
 import Products from "./Components/Products";
 import Marquees from "./Components/Marquees";
+import Cards from "./Components/Cards";
 
 const App = () => {
   return (
@@ -13,10 +14,11 @@ const App = () => {
       <Stripes />
       <Products />
       <Marquees />
+      <Cards />
     </div>
   );
 };
 
 export default App;
 // 20.21-01.13.38
-// marquee comp
+// call to action
