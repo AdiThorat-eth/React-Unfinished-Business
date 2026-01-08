@@ -11,7 +11,7 @@ const Navbar = () => {
         />
         <div className="links flex gap-14 ml-24">
           {["Home", "Work", "Culture", "", "News"].map((elem, index) => (
-            <a className="text-md flex items-center gap-1" href="#">
+            <a key={index} className="text-md flex items-center gap-1" href="#">
               {/* we cant give h and w to span tag bcoz it is inline elem so to give h and w we have to make inline-block */}
               {elem.length === 0 && (
                 <span className="w-[1px] h-4 bg-zinc-600"></span>

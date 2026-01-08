@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="text-zinc-400 pl-35">
             <h4 className="mb-10 mt-5">Socials</h4>
             {["Instagram", "Twitter(x?)", "LinkedIn"].map((item, index) => (
-              <a className="block mt-3" href="#">
+              <a key={index} className="block mt-3" href="#">
                 {item}
               </a>
             ))}
@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="text-zinc-400 ">
             <h4 className="mb-10 mt-5">Sitemap</h4>
             {["Home", "Work", "Careers", "Contact"].map((item, index) => (
-              <a className="block mt-3 text-zinc-200" href="#">
+              <a key={index} className="block mt-3 text-zinc-200" href="#">
                 {item}
               </a>
             ))}

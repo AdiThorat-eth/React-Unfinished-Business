@@ -29,8 +29,8 @@ const Marquees = () => {
 
   return (
     <div className="my-10">
-      {images.map((item) => (
-        <Marquee imagesurl={item} />
+      {images.map((item, index) => (
+        <Marquee key={index} imagesurl={item} />
       ))}
     </div>
   );
