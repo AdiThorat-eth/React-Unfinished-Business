@@ -28,9 +28,13 @@ const Marquees = () => {
   ];
 
   return (
-    <div className="my-10">
+    <div className="my-10 w-full relative overflow-hidden">
       {images.map((item, index) => (
-        <Marquee key={index} imagesurl={item} />
+        <Marquee
+          key={index}
+          imagesurl={item}
+          direction={index == 0 ? "left" : "right"}
+        />
       ))}
     </div>
   );

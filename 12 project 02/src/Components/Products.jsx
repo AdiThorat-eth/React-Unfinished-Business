@@ -42,7 +42,7 @@ const Products = () => {
   return (
     <div className="mt-32 relative">
       {products.map((elem, index) => (
-        <Product data={elem} index={index} mover={mover} />
+        <Product data={elem} key={index} index={index} mover={mover} />
       ))}
       {/* pointer-events-none used to under component clickable */}
       <div className="w-full h-full absolute top-0 pointer-events-none">
