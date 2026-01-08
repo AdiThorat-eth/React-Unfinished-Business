@@ -1,11 +1,14 @@
 import React from "react";
 import Button from "./Button";
 
-const Product = ({ data }) => {
+const Product = ({ data, mover, index }) => {
   return (
-    <div className="w-full py-20">
+    <div className="w-full py-20 h-[23rem]">
       <div
-        className="max-w-screen-lg mx-auto flex
+        onMouseEnter={() => {
+          mover(index);
+        }}
+        className="max-w-screen-xl mx-auto flex
       justify-between items-center"
       >
         <h1 className="text-6xl font-medium">{data.title}</h1>

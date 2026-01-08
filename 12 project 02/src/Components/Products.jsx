@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Product from "./Product";
+import { motion } from "motion/react";
 
 const Products = () => {
   let products = [
@@ -33,11 +34,54 @@ const Products = () => {
     },
   ];
 
+  const [pos, setPos] = useState(0);
+  const mover = (val) => {
+    setPos(val * 23);
+  };
+
   return (
-    <div className="mt-32">
+    <div className="mt-32 relative">
       {products.map((elem, index) => (
-        <Product data={elem} key={index} />
+        <Product data={elem} index={index} mover={mover} />
       ))}
+      {/* pointer-events-none used to under component clickable */}
+      <div className="w-full h-full absolute top-0 pointer-events-none">
+        <motion.div
+          initial={{ y: pos, x: "-50%" }}
+          animate={{ y: pos + `rem` }}
+          transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.4 }}
+          className="window w-[31rem] h-[23rem] absolute   left-[41%] -top-10 overflow-hidden"
+        >
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.4 }}
+            className="w-full h-full"
+          >
+            <video autoPlay muted loop src="/videos/Arqitel.webm"></video>
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.4 }}
+            className="w-full h-full "
+          >
+            <video autoPlay muted loop src="/videos/Cula.mp4"></video>
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.4 }}
+            className="w-full h-full"
+          >
+            <video autoPlay muted loop src="/videos/TTR.webm"></video>
+          </motion.div>
+          <motion.div
+            animate={{ y: -pos + `rem` }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.4 }}
+            className="w-full h-full"
+          >
+            <video autoPlay muted src="/videos/yahoo.webm"></video>
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };
