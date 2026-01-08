@@ -58,4 +58,3 @@ const App = () => {
 export default App;
 // 20.21-01.13.38
 // 20.22 - 29.41
-// marquee animation

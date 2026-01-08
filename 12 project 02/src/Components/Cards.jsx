@@ -14,7 +14,7 @@ const Cards = () => {
           start={false}
           end={true}
           data={data[0]}
-          hover={false}
+          hover="false"
         />
         <Card
           width="w-[70%]"
@@ -22,7 +22,7 @@ const Cards = () => {
           start={true}
           end={false}
           data={data[1]}
-          hover="hover:bg-violet-600"
+          hover="true"
         />
       </div>
     </div>
