@@ -4,6 +4,7 @@ import {
   decrement,
   increment,
   incrementByAmount,
+  incrementAsync,
 } from "./store/reducers/counterSlice";
 
 const App = () => {
@@ -32,6 +33,8 @@ const App = () => {
         </button>
         <button
           onClick={() => dispatch(incrementByAmount(5))}
+          // increment with delay using Async fxn
+          // onClick={() => dispatch(incrementAsync(5))}
           className="border rounded bg-sky-200 py-1 px-2 border border-black m-2"
         >
           Increment by 5
