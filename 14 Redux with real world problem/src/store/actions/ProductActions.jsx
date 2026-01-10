@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { getproducts } from "../reducers/ProductReducer";
 
@@ -15,6 +14,7 @@ export const asyncgetproducts = () => async (dispatch, getState) => {
   }
 };
 
+//eg-
 // function a() {
 //   return function() {}
 // }
