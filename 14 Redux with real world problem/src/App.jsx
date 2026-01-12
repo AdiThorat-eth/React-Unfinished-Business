@@ -17,6 +17,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/users" element={<Users />} />
+        {/* If you want to show same page after Users page in route */}
+        {/* eg - like you want to show user details after even if user entered wrong route in user page */}
+        {/* <Route path="/users/:id" element={<PageThatYouWantToShow />} */}
         <Route path="/products" element={<Products />} />
         {/* If user entered any wrong route it will redirected to NotFound page */}
         <Route path="*" element={<NotFound />} />
