@@ -3,6 +3,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Hero from "./Components/Hero";
 import Users from "./Components/Users";
 import Products from "./Components/Products";
+import NotFound from "./Components/NotFound";
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <Route path="/" element={<Hero />} />
         <Route path="/users" element={<Users />} />
         <Route path="/products" element={<Products />} />
+        {/* If user entered any wrong route it will redirected to NotFound page */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
