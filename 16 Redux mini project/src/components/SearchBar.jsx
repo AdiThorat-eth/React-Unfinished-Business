@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SearchBar = () => {
-  return <div>SearchBar</div>;
+  const [text, setText] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(text);
+    setText("");
+  };
+
+  return (
+    <div>
+      <form
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+        className="flex gap-5 p-10 bg-zinc-800"
+      >
+        <input
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+          className="border-2 px-4 py-2 text-xl rounded outline-none w-full"
+          type="text"
+          placeholder="Search anything..."
+        />
+        <button className="border-2 px-4 py-2 text-xl rounded outline-none  cursor-pointer required: active:scale-90 ">
+          Search
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default SearchBar;
