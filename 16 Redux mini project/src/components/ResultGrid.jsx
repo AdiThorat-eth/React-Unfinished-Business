@@ -7,6 +7,7 @@ import {
   setResults,
 } from "../redux/features/SearchSlice";
 import { useDispatch, useSelector } from "react-redux";
+import ResultCard from "./ResultCard";
 
 const ResultGrid = () => {
   const dispatch = useDispatch();
@@ -56,15 +57,19 @@ const ResultGrid = () => {
       }
     };
     getData();
-  }, [query, activeTab]);
+  }, [query, activeTab, dispatch]);
 
   if (error) return <h1>Error</h1>;
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="flex w-full pb-2 flex-wrap gap-2 px-10">
       {results.map((item, index) => {
-        return <div key={index}>{item.title}</div>;
+        return (
+          <div key={index}>
+            <ResultCard item={item} />
+          </div>
+        );
       })}
     </div>
   );
