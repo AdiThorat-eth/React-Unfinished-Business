@@ -1,12 +1,14 @@
 import React from "react";
 import SearchBar from "./components/SearchBar";
 import Tabs from "./components/Tabs";
+import ResultGrid from "./components/ResultGrid";
 
 const App = () => {
   return (
     <div className="h-screen w-full bg-gray-950 text-white">
       <SearchBar />
       <Tabs />
+      <ResultGrid />
     </div>
   );
 };
@@ -14,3 +16,4 @@ const App = () => {
 export default App;
 
 // 2:20:37
+// 2:50
