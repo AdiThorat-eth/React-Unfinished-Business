@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast, Zoom } from "react-toastify";
 
 const initialState = {
   items: JSON.parse(localStorage.getItem("collection")) || [],
@@ -25,10 +26,43 @@ const CollectionSlice = createSlice({
       state.items = [];
       localStorage.removeItem("collection");
     },
+
+    addedToast: () => {
+      toast.success("Added to Collection ✅", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
+    },
+
+    removeToast: () => {
+      toast.error("Removed from Collection", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
+    },
   },
 });
 
-export const { addCollection, removeCollection, clearCollection } =
-  CollectionSlice.actions;
+export const {
+  addCollection,
+  removeCollection,
+  clearCollection,
+  addedToast,
+  removeToast,
+} = CollectionSlice.actions;
 
 export default CollectionSlice.reducer;
