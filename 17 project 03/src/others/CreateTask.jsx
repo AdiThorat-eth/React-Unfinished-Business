@@ -12,15 +12,18 @@ const CreateTask = () => {
           <div>
             <h3 className="mb-0.5">Date</h3>
             <input
-              className="bg-white text-black mb-2 p-1 w-full"
+              className="mb-2 p-1 w-full placeholder:text-gray-500 border border-white"
               type="date"
+              placeholder:text-gray-500
+              border
+              border-white
             />
           </div>
 
           <div>
             <h3 className="mb-0.5">Assign to</h3>
             <input
-              className="bg-white text-black mb-2 p-1 w-full"
+              className="placeholder:text-gray-400 border border-white mb-2 p-1 w-full"
               type="text"
               placeholder="Employee name"
             />
@@ -29,7 +32,7 @@ const CreateTask = () => {
           <div>
             <h3 className="mb-0.5">Category</h3>
             <input
-              className="bg-white text-black mb-2 p-1 w-full"
+              className="placeholder:text-gray-400 border border-white  mb-2 p-1 w-full"
               type="text"
               placeholder="Design, Dev, etc"
             />
@@ -38,7 +41,7 @@ const CreateTask = () => {
           <div>
             <h3 className="mb-0.5">Task Title</h3>
             <input
-              className="bg-white text-black mb-2 p-1 w-full"
+              className="placeholder:text-gray-400 border border-white  mb-2 p-1 w-full"
               type="text"
               placeholder="Make a UI Design"
             />
@@ -48,7 +51,7 @@ const CreateTask = () => {
         <div className="w-2/5 flex flex-col items-start ">
           <h3 className="mb-0.5">Description</h3>
           <textarea
-            className="w-full h-44 text-sm py-2 px-4 rounded outline-none bg-white text-black p-1"
+            className="w-full h-44 text-sm py-2 px-4 rounded outline-none placeholder:text-gray-400 border border-white  p-1"
             name=""
             id=""
             cols="30"

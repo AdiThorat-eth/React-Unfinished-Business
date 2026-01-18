@@ -1,7 +1,271 @@
-import React from "react";
+const employees = [
+  {
+    id: 1,
+    firstName: "Arjun",
+    email: "employee1@company.com",
+    password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        taskTitle: "Update Documentation",
+        taskDescription: "Review and update the project API documentation.",
+        taskDate: "2025-11-15",
+        taskCategory: "Development",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        taskTitle: "Code Review",
+        taskDescription: "Check the pull requests for the UI team.",
+        taskDate: "2025-11-16",
+        taskCategory: "Development",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        taskTitle: "Client Meeting",
+        taskDescription: "Discuss project requirements.",
+        taskDate: "2025-11-10",
+        taskCategory: "Meeting",
+      },
+    ],
+  },
+  {
+    id: 2,
+    firstName: "Sneha",
+    email: "employee2@company.com",
+    password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 1,
+    },
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        taskTitle: "Design Homepage",
+        taskDescription: "Create high-fidelity wireframes.",
+        taskDate: "2025-11-16",
+        taskCategory: "Design",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        taskTitle: "Asset Export",
+        taskDescription: "Export SVG icons.",
+        taskDate: "2025-11-17",
+        taskCategory: "Design",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        taskTitle: "Color Palette Review",
+        taskDescription: "Finalize brand colors.",
+        taskDate: "2025-11-08",
+        taskCategory: "Branding",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
+        taskTitle: "Internal Presentation",
+        taskDescription: "Present the Q4 roadmap.",
+        taskDate: "2025-11-14",
+        taskCategory: "Meeting",
+      },
+    ],
+  },
+  {
+    id: 3,
+    firstName: "Ravi",
+    email: "employee3@company.com",
+    password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        taskTitle: "Database Optimization",
+        taskDescription: "Index the user table.",
+        taskDate: "2025-11-18",
+        taskCategory: "DevOps",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        taskTitle: "Server Migration",
+        taskDescription: "Move data to AWS.",
+        taskDate: "2025-11-05",
+        taskCategory: "DevOps",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        taskTitle: "Security Audit",
+        taskDescription: "Perform vulnerability scan.",
+        taskDate: "2025-11-19",
+        taskCategory: "Security",
+      },
+    ],
+  },
+  {
+    id: 4,
+    firstName: "Priya",
+    email: "employee4@company.com",
+    password: "123",
+    taskCounts: {
+      active: 3,
+      newTask: 2,
+      completed: 1,
+      failed: 1,
+    },
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        taskTitle: "User Testing",
+        taskDescription: "Conduct usability tests.",
+        taskDate: "2025-11-20",
+        taskCategory: "Research",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        taskTitle: "Competitor Analysis",
+        taskDescription: "Compare feature sets.",
+        taskDate: "2025-11-02",
+        taskCategory: "Research",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        taskTitle: "Survey Distribution",
+        taskDescription: "Email feedback survey.",
+        taskDate: "2025-11-21",
+        taskCategory: "Marketing",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
+        taskTitle: "Workshop Session",
+        taskDescription: "Lead the design workshop.",
+        taskDate: "2025-11-13",
+        taskCategory: "Management",
+      },
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        taskTitle: "Content Strategy",
+        taskDescription: "Plan the blog posts.",
+        taskDate: "2025-11-22",
+        taskCategory: "Content",
+      },
+    ],
+  },
+  {
+    id: 5,
+    firstName: "Karan",
+    email: "employee5@company.com",
+    password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
+    tasks: [
+      {
+        active: true,
+        newTask: true,
+        completed: false,
+        failed: false,
+        taskTitle: "PR Review",
+        taskDescription: "Review authentication module PRs.",
+        taskDate: "2025-11-15",
+        taskCategory: "Development",
+      },
+      {
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+        taskTitle: "Environment Setup",
+        taskDescription: "Configure Docker containers.",
+        taskDate: "2025-11-01",
+        taskCategory: "Infrastructure",
+      },
+      {
+        active: true,
+        newTask: false,
+        completed: false,
+        failed: false,
+        taskTitle: "Refactor Components",
+        taskDescription: "Clean up dashboard logic.",
+        taskDate: "2025-11-18",
+        taskCategory: "Development",
+      },
+    ],
+  },
+];
 
-const localStorage = () => {
-  return <div>localStorage</div>;
+const admin = [
+  {
+    id: 101,
+    email: "admin@company.com",
+    password: "123",
+  },
+];
+
+export const setLocalStorage = () => {
+  localStorage.setItem("employees", JSON.stringify(employees));
+  localStorage.setItem("admin", JSON.stringify(admin));
 };
 
-export default localStorage;
+export const getLocalStorage = () => {
+  const employees = JSON.parse(localStorage.getItem("employees"));
+  const admin = JSON.parse(localStorage.getItem("admin"));
+  return { employees, admin };
+};

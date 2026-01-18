@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
+  // console.log(handleLogin);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -8,6 +10,7 @@ const Login = () => {
     e.preventDefault();
     // console.log(email);
     // console.log(password);
+    handleLogin(email, password);
     setEmail("");
     setPassword("");
   };
@@ -26,9 +29,9 @@ const Login = () => {
           }}
           value={email}
           required
-          className="bg-transparent outline-none placeholder:text-gray-400 rounded-full capitalize text-2xl border-2 border-emerald-600"
+          className="bg-transparent outline-none placeholder:text-gray-400 rounded-full text-2xl border-2 border-emerald-600"
           type="email"
-          placeholder="   Enter your email"
+          placeholder="   Enter Your Email"
         />
         <input
           onChange={(e) => {
@@ -36,11 +39,11 @@ const Login = () => {
           }}
           value={password}
           required
-          className="bg-transparent outline-none placeholder:text-gray-400 rounded-full capitalize text-2xl border-2 border-emerald-600"
+          className="bg-transparent outline-none placeholder:text-gray-400 rounded-full text-2xl border-2 border-emerald-600"
           type="password"
-          placeholder="   Enter your password"
+          placeholder="   Enter Your Password"
         />
-        <button className="bg-emerald-600 rounded-full w-30 text-2xl py-1 mt-10 active:scale-90 font-semibold">
+        <button className="bg-emerald-600 rounded-full w-30 text-2xl py-1 mt-5 active:scale-90 font-semibold">
           Login
         </button>
       </form>
