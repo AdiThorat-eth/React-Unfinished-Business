@@ -9,23 +9,33 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authData = useContext(AuthContext);
 
+  // useEffect(() => {
+  //   if (authData && authData.employees) {
+  //     const loggedInUser = localStorage.getItem("loggedInUser");
+  //     if (loggedInUser) {
+  //       const parsedUser = JSON.parse(loggedInUser);
+  //       setUser(parsedUser.role);
+  //       if (parsedUser.role === "employee" && parsedUser.email) {
+  //         const employee = authData.employees.find(
+  //           (e) => e.email === parsedUser.email,
+  //         );
+  //         if (employee) {
+  //           setLoggedInUserData(employee);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }, [authData]);
+
   useEffect(() => {
-    if (authData && authData.employees) {
-      const loggedInUser = localStorage.getItem("loggedInUser");
-      if (loggedInUser) {
-        const parsedUser = JSON.parse(loggedInUser);
-        setUser(parsedUser.role);
-        if (parsedUser.role === "employee" && parsedUser.email) {
-          const employee = authData.employees.find(
-            (e) => e.email === parsedUser.email,
-          );
-          if (employee) {
-            setLoggedInUserData(employee);
-          }
-        }
-      }
+    const loggedInUser = localStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+      const userData = JSON.parse(loggedInUser);
+      setUser(userData.role);
+      setLoggedInUserData(userData.data);
     }
-  }, [authData]);
+  }, []);
 
   const handleLogin = (email, password) => {
     if (email == "admin@me.com" && password == "123") {
@@ -40,7 +50,11 @@ const App = () => {
         setLoggedInUserData(employee);
         localStorage.setItem(
           "loggedInUser",
-          JSON.stringify({ role: "employee", email: employee.email }),
+          JSON.stringify({
+            role: "employee",
+            email: employee.email,
+            data: employee,
+          }),
         );
       } else {
         alert("invalid");
