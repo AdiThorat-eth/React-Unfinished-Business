@@ -2,9 +2,9 @@ import React from "react";
 
 const NewTask = ({ elem }) => {
   return (
-    <div className="h-full relative w-75 bg-pink-400 rounded-xl shrink-0 p-5">
+    <div className="h-full relative w-75 bg-purple-400 rounded-xl shrink-0 p-5">
       <div className="flex justify-between items-center text-sm">
-        <h3 className="bg-red-600 px-3 py-1 rounded ">{elem.taskCategory}</h3>
+        <h3 className="bg-red-600 px-3 py-1 rounded ">{elem.category}</h3>
         <h4 className="text-sm">{elem.taskDate}</h4>
       </div>
       <h2 className="mt-5 text-2xl font-semibold">{elem.taskTitle}</h2>
