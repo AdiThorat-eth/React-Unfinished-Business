@@ -1,19 +1,18 @@
 import React from "react";
 
-const CompleteTask = () => {
+const CompleteTask = ({ elem }) => {
   return (
-    <div className="h-full w-75 bg-slate-400 rounded-xl shrink-0 p-5">
+    <div className="h-full relative w-75 bg-slate-400 rounded-xl shrink-0 p-5">
       <div className="flex justify-between items-center text-sm">
-        <h3 className="bg-red-600 px-3 py-1 rounded ">High</h3>
-        <h4 className="text-sm">30 Feb 2000</h4>
+        <h3 className="bg-red-600 px-3 py-1 rounded ">{elem.taskCategory}</h3>
+        <h4 className="text-sm">{elem.taskDate}</h4>
       </div>
-      <h2 className="mt-5 text-2xl font-semibold">Make yoyo</h2>
-      <p className="text-sm mt-2">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus
-        eveniet eum hic! Ipsum, similique obcaecati.
-      </p>
-      <div className="mt-4">
-        <button className="w-full bg-green-500">Complete</button>
+      <h2 className="mt-5 text-2xl font-semibold">{elem.taskTitle}</h2>
+      <p className="text-sm mt-2">{elem.taskDescription}</p>
+      <div className="mt-4 absolute bottom-5">
+        <button className="w-full bg-green-500 py-1 px-2 text-sm">
+          Completed
+        </button>
       </div>
     </div>
   );
