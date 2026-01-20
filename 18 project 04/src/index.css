@@ -18,3 +18,47 @@ section {
   position: relative;
   z-index: 2;
 }
+
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("/fonts/Gilroy-Bold.ttf");
+}
+
+/*  */
+
+@font-face {
+  font-family: "Gilroy-ExtraBold";
+  src: url("/fonts/Gilroy-ExtraBold.ttf");
+}
+
+/*  */
+
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url("/fonts/Gilroy-Light.ttf");
+}
+
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url("/fonts/Gilroy-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Gilroy-Regular";
+  src: url("/fonts/Gilroy-Regular.ttf");
+}
+
+/*  */
+@font-face {
+  font-family: "GT";
+  src: url("/fonts/GTSectraDisplay-Bold.woff2");
+}
+
+@theme {
+  --font-gilroy-bold: "Gilroy-Bold";
+  --font-gilroy-extrabold: "Gilroy-ExtraBold";
+  --font-gilroy-light: "Gilroy-Light";
+  --font-gilroy-medium: "Gilroy-Medium";
+  --font-gilroy-regular: "Gilroy-Regular";
+  --font-gt: "GT";
+}

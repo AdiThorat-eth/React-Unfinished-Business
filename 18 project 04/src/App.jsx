@@ -24,9 +24,11 @@ const App = () => {
         >
           <Dog />
         </Canvas>
-        <section></section>
-        <section></section>
-        <section></section>
+        <section id="section-1">
+          <h1 className="text-9xl text-white font-gt">We</h1>
+        </section>
+        <section id="section-2"></section>
+        <section id="section-3"></section>
       </main>
     </>
   );

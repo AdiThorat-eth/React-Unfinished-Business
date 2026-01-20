@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Canvas, useThree } from "@react-three/fiber";
 import {
@@ -7,9 +7,14 @@ import {
   useTexture,
   useAnimations,
 } from "@react-three/drei";
-import { sample } from "three/src/nodes/TSL.js";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Dog = () => {
+  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(ScrollTrigger);
+
   // useGLTF is used to load the 3d model
   const model = useGLTF("/models/dog.drc.glb");
 
@@ -76,6 +81,44 @@ const Dog = () => {
     } else {
       child.material = branchMaterial;
     }
+  });
+
+  const dogModel = useRef(model);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#section-1",
+        endTrigger: "#section-3",
+        start: "top top",
+        end: "bottom bottom",
+        markers: true,
+        scrub: true,
+      },
+    });
+    // if you want to move model from current position you have to use -= or +=
+    tl.to(dogModel.current.scene.position, {
+      z: "-=0.75",
+      y: "+=0.05",
+    })
+      .to(dogModel.current.scene.rotation, {
+        x: `+=${Math.PI / 8}`,
+      })
+      .to(
+        dogModel.current.scene.rotation,
+        {
+          y: `-=${Math.PI}`,
+        },
+        "third", // by using "third" we are telling that both "third" animation should start at the same time
+      )
+      .to(
+        dogModel.current.scene.position,
+        {
+          x: "-=0.5",
+          z: "+=0.3",
+        },
+        "third",
+      );
   });
 
   return (
