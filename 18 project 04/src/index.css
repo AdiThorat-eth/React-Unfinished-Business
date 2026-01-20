@@ -6,7 +6,15 @@
   box-sizing: border-box;
 }
 html,
-body {
+body,
+#root {
   width: 100%;
   background-color: #000000;
+}
+
+section {
+  min-height: 100vh;
+  border: 2px solid #ffffff;
+  position: relative;
+  z-index: 2;
 }
