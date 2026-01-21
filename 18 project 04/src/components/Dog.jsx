@@ -109,13 +109,13 @@ const Dog = () => {
         {
           y: `-=${Math.PI}`,
         },
-        "third", // by using "third" we are telling that both "third" animation should start at the same time
+        "third", // by using "third" tag we are telling that both "third" animation should start at the same time
       )
       .to(
         dogModel.current.scene.position,
         {
           x: "-=0.5",
-          z: "+=0.3",
+          z: "+=0.4",
         },
         "third",
       );
