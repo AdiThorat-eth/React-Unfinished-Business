@@ -159,7 +159,51 @@ const App = () => {
             </div>
           </div>
         </section>
-        <section id="section-3"></section>
+        <section id="section-3" className="">
+          <div className="top flex gap-5 pt-50">
+            <div className="left w-1/2">
+              <h3 className="pl-[15rem] text-5xl font-gt">
+                We're crafting <br />
+                emotional <br />
+                experiences aimed <br />
+                at improving <br />
+                results
+                <br />
+              </h3>
+            </div>
+            <div className="right w-1/2 "></div>
+          </div>
+        </section>
+        <section id="section-4" className="h-80">
+          <div className="bottom flex gap-10 mt-10">
+            <div className="left w-1/2"></div>
+            <div className="right w-1/2 flex gap-10 leading-[1.8] font-Heebo-thin opacity-60 text-sm">
+              <p>
+                Dogstudio is a design & <br />
+                technology firm working globally <br />
+                from our offices based in
+                <br /> Belgium and Chicago.
+                <br /> Our strong focus on producing <br />
+                high quality & emotional
+                <br /> brandings, digital products and
+                <br /> experiences became a signature.
+                <br />
+              </p>
+              <p>
+                We’re passionate about moving <br />
+                people and solving problems for
+                <br />
+                the likes of Microsoft, The
+                <br /> Museum of Science And Industry <br />
+                Of Chicago, The Kennedy Center
+                <br /> of Washington, Dragone, Quanta
+                <br />
+                Magazine, and many more.
+                <br />
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );
