@@ -34,18 +34,6 @@ const Dog = () => {
     actions["Take 001"].play();
   }, [actions]);
 
-  // const textures = useTexture(
-  //   {
-  //     normalMap: "/images/dog_normals.jpg",
-  //     sampleMatCap: "/matcap/mat-2.png",
-  //   },
-  //   // callback if given to apply settings to all textures
-  //   (texture) => {
-  //     texture.flipY = false;
-  //     texture.colorSpace = THREE.SRGBColorSpace; // 3
-  //   },
-  // );
-
   const [normalMap] = useTexture(["/images/dog_normals.jpg"]).map((texture) => {
     texture.flipY = false;
     texture.colorSpace = THREE.SRGBColorSpace;
@@ -108,7 +96,13 @@ const Dog = () => {
     return texture;
   });
 
-  const material = useRef({
+  const dogMaterialRef = useRef({
+    uMatcap1: { value: mat19 },
+    uMatcap2: { value: mat2 },
+    uProgress: { value: 1.0 },
+  });
+
+  const branchMaterialRef = useRef({
     uMatcap1: { value: mat19 },
     uMatcap2: { value: mat2 },
     uProgress: { value: 1.0 },
@@ -122,15 +116,13 @@ const Dog = () => {
 
   const branchMaterial = new THREE.MeshMatcapMaterial({
     normalMap: branchNormalMap,
-    map: branchMap,
+    matcap: mat2,
   });
 
-  function onBeforeCompile(shader) {
-    shader.uniforms.uMatcapTexture1 = material.current.uMatcap1;
-    shader.uniforms.uMatcapTexture2 = material.current.uMatcap2;
-    shader.uniforms.uProgress = material.current.uProgress;
-
-    // Store reference to shader uniforms for GSAP animation
+  function onBeforeCompileDog(shader) {
+    shader.uniforms.uMatcapTexture1 = dogMaterialRef.current.uMatcap1;
+    shader.uniforms.uMatcapTexture2 = dogMaterialRef.current.uMatcap2;
+    shader.uniforms.uProgress = dogMaterialRef.current.uProgress;
 
     shader.fragmentShader = shader.fragmentShader.replace(
       "void main() {",
@@ -156,7 +148,39 @@ const Dog = () => {
         `,
     );
   }
-  dogMaterial.onBeforeCompile = onBeforeCompile;
+
+  function onBeforeCompileBranch(shader) {
+    shader.uniforms.uMatcapTexture1 = branchMaterialRef.current.uMatcap1;
+    shader.uniforms.uMatcapTexture2 = branchMaterialRef.current.uMatcap2;
+    shader.uniforms.uProgress = branchMaterialRef.current.uProgress;
+
+    shader.fragmentShader = shader.fragmentShader.replace(
+      "void main() {",
+      `
+        uniform sampler2D uMatcapTexture1;
+        uniform sampler2D uMatcapTexture2;
+        uniform float uProgress;
+
+        void main() {
+        `,
+    );
+
+    shader.fragmentShader = shader.fragmentShader.replace(
+      "vec4 matcapColor = texture2D( matcap, uv );",
+      `
+          vec4 matcapColor1 = texture2D( uMatcapTexture1, uv );
+          vec4 matcapColor2 = texture2D( uMatcapTexture2, uv );
+          float transitionFactor  = 0.2;
+          
+          float progress = smoothstep(uProgress - transitionFactor,uProgress, (vViewPosition.x+vViewPosition.y)*0.5 + 0.5);
+
+          vec4 matcapColor = mix(matcapColor2, matcapColor1, progress );
+        `,
+    );
+  }
+
+  dogMaterial.onBeforeCompile = onBeforeCompileDog;
+  branchMaterial.onBeforeCompile = onBeforeCompileBranch;
 
   model.scene.traverse((child) => {
     if (child.name.includes("DOG")) {
@@ -208,13 +232,24 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="tomorrowland"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat19;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat19;
+        branchMaterialRef.current.uMatcap1.value = mat19;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
@@ -222,13 +257,24 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="navy-pier"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat8;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat8;
+        branchMaterialRef.current.uMatcap1.value = mat8;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
@@ -236,13 +282,24 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="msi-chicago"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat9;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat9;
+        branchMaterialRef.current.uMatcap1.value = mat9;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
@@ -250,13 +307,24 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="phone"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat12;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat12;
+        branchMaterialRef.current.uMatcap1.value = mat12;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
@@ -264,13 +332,24 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="kikk"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat10;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat10;
+        branchMaterialRef.current.uMatcap1.value = mat10;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
@@ -278,13 +357,24 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="kennedy"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat11;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat11;
+        branchMaterialRef.current.uMatcap1.value = mat11;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
@@ -292,25 +382,47 @@ const Dog = () => {
     document
       .querySelector(`.title[img-title="opera"]`)
       .addEventListener("mouseenter", () => {
-        material.current.uMatcap1.value = mat13;
-        gsap.to(material.current.uProgress, {
+        dogMaterialRef.current.uMatcap1.value = mat13;
+        branchMaterialRef.current.uMatcap1.value = mat13;
+        gsap.to(dogMaterialRef.current.uProgress, {
           value: 0.0,
           duration: 0.3,
           onComplete: () => {
-            material.current.uMatcap2.value = material.current.uMatcap1.value;
-            material.current.uProgress.value = 1.0;
+            dogMaterialRef.current.uMatcap2.value =
+              dogMaterialRef.current.uMatcap1.value;
+            dogMaterialRef.current.uProgress.value = 1.0;
+          },
+        });
+        gsap.to(branchMaterialRef.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            branchMaterialRef.current.uMatcap2.value =
+              branchMaterialRef.current.uMatcap1.value;
+            branchMaterialRef.current.uProgress.value = 1.0;
           },
         });
       });
 
     document.querySelector(`.titles`).addEventListener("mouseleave", () => {
-      material.current.uMatcap1.value = mat2;
-      gsap.to(material.current.uProgress, {
+      dogMaterialRef.current.uMatcap1.value = mat2;
+      branchMaterialRef.current.uMatcap1.value = mat2;
+      gsap.to(dogMaterialRef.current.uProgress, {
         value: 0.0,
         duration: 0.3,
         onComplete: () => {
-          material.current.uMatcap2.value = material.current.uMatcap1.value;
-          material.current.uProgress.value = 1.0;
+          dogMaterialRef.current.uMatcap2.value =
+            dogMaterialRef.current.uMatcap1.value;
+          dogMaterialRef.current.uProgress.value = 1.0;
+        },
+      });
+      gsap.to(branchMaterialRef.current.uProgress, {
+        value: 0.0,
+        duration: 0.3,
+        onComplete: () => {
+          branchMaterialRef.current.uMatcap2.value =
+            branchMaterialRef.current.uMatcap1.value;
+          branchMaterialRef.current.uProgress.value = 1.0;
         },
       });
     });
