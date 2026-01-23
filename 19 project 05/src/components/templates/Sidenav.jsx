@@ -6,7 +6,7 @@ const Sidenav = () => {
     <div className="w-1/5 h-full border-r-2 border-zinc-200 p-10">
       <h1 className="text-4xl text-center font-black mb-5">
         <i className="ri-tv-line text-[#6556cd]"></i>
-        <span className="ml-1 font-CD">YoYo</span>
+        <span className="ml-1 font-HJ">YoYo</span>
       </h1>
 
       <nav className="font-GT flex flex-col text-zinc-300 text-xl rounded-t-4xl rounded-b-4xl border-y-2 border-zinc-200 pl-5">

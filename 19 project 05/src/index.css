@@ -3,8 +3,7 @@
 html,
 body {
   /* overflow-x: hidden; */
-  font-family: var(--font-Heebo);
-  font-weight: 500;
+  font-family: var(--font-bokra);
 }
 
 @font-face {
@@ -13,17 +12,37 @@ body {
 }
 
 @font-face {
-  font-family: "Heebo";
-  src: url("/fonts/Heebo-Thin.woff2");
+  font-family: "bokra";
+  src: url("/fonts/BOKRA.ttf");
 }
 
 @font-face {
-  font-family: "CD";
-  src: url("/fonts/ClashDisplay-Bold.ttf");
+  font-family: "HJ";
+  src: url("/fonts/Holly Jolly.ttf");
+}
+
+@font-face {
+  font-family: "Imperium";
+  src: url("/fonts/Imperium.otf");
 }
 
 @theme {
+  --font-HJ: "HJ";
+  --font-bokra: "bokra";
   --font-GT: "GT";
-  --font-Heebo: "Heebo";
-  --font-CD: "CD";
+  --font-Imperium: "Imperium";
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6556cd;
+  border-radius: 10px;
 }
