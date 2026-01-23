@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+html,
+body {
+  /* overflow-x: hidden; */
+  font-family: var(--font-Heebo);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "GT";
+  src: url("/fonts/GTSectraDisplay-Bold.woff2");
+}
+
+@font-face {
+  font-family: "Heebo";
+  src: url("/fonts/Heebo-Thin.woff2");
+}
+
+@font-face {
+  font-family: "CD";
+  src: url("/fonts/ClashDisplay-Bold.ttf");
+}
+
+@theme {
+  --font-GT: "GT";
+  --font-Heebo: "Heebo";
+  --font-CD: "CD";
+}
