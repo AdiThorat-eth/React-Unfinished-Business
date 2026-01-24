@@ -20,7 +20,7 @@ const Header = ({ data }) => {
         {data.name || data.title || data.original_name || data.original_title}
       </h1>
       <p className="text-white text-md w-4/5 mb-5">
-        {data.overview.slice(200)}...
+        {data.overview.slice(0, 200)}...
         <Link className="text-blue-400"> more</Link>
       </p>
       <p className="">
