@@ -3,7 +3,8 @@
 html,
 body {
   /* overflow-x: hidden; */
-  font-family: var(--font-bokra);
+  font-family: var(--font-inter);
+  font-weight: 600;
 }
 
 @font-face {
@@ -12,8 +13,8 @@ body {
 }
 
 @font-face {
-  font-family: "bokra";
-  src: url("/fonts/BOKRA.ttf");
+  font-family: "inter";
+  src: url("/fonts/Inter-VariableFont_opsz,wght.ttf");
 }
 
 @font-face {
@@ -28,7 +29,7 @@ body {
 
 @theme {
   --font-HJ: "HJ";
-  --font-bokra: "bokra";
+  --font-inter: "inter";
   --font-GT: "GT";
   --font-Imperium: "Imperium";
 }
