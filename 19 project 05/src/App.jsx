@@ -15,4 +15,4 @@ const App = () => {
 export default App;
 
 // 55:11
-// creating horizontal cards
+// 2:05
