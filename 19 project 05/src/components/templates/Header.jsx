@@ -16,9 +16,7 @@ const Header = ({ data }) => {
       }}
       className="w-full h-[50vh] m-auto rounded-2xl flex flex-col justify-end p-5 items-start"
     >
-      <h1 className="w-4/5 text-5xl font-bold text-white tracking-[3px]">
-        {data.name || data.title || data.original_name || data.original_title}
-      </h1>
+      <h1 className="w-4/5 text-5xl font-bold text-white tracking-[3px]"></h1>
       <p className="text-white text-md w-4/5 mb-5">
         {data.overview.slice(0, 200)}...
         <Link className="text-blue-400"> more</Link>

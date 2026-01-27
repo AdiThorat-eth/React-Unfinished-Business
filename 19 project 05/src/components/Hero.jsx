@@ -5,6 +5,7 @@ import axios from "../utils/axios";
 import Header from "./templates/Header";
 import HorizontalCards from "./templates/HorizontalCards";
 import Dropdown from "./templates/Dropdown";
+import Loading from "./Loading";
 
 const Hero = () => {
   document.title = "YoYo Movies | Home";
@@ -40,27 +41,31 @@ const Hero = () => {
 
   return (
     <>
-      <Sidenav />
-      {wallpaper && trending ? (
-        <div className="w-4/5 h-full px-2 overflow-auto overflow-x-hidden">
-          <Topnav />
-          <Header data={wallpaper} />
+      <div className="w-full h-screen flex overflow-y-scroll">
+        {wallpaper && trending ? (
+          <>
+            <Sidenav />
+            <div className="w-4/5 h-full px-2 overflow-auto overflow-x-hidden">
+              <Topnav />
+              <Header data={wallpaper} />
 
-          <div className="flex justify-between p-5">
-            <h1 className="text-3xl font-semibold">Trending</h1>
+              <div className="flex justify-between p-5">
+                <h1 className="text-3xl font-semibold">Trending</h1>
 
-            <Dropdown
-              title="Filter"
-              options={["tv", "movie", "all"]}
-              func={(e) => setCategory(e.target.value)}
-            />
-          </div>
+                <Dropdown
+                  title="Filter"
+                  options={["tv", "movie", "all"]}
+                  func={(e) => setCategory(e.target.value)}
+                />
+              </div>
 
-          <HorizontalCards data={trending} />
-        </div>
-      ) : (
-        <h1>Loading...</h1>
-      )}
+              <HorizontalCards data={trending} />
+            </div>
+          </>
+        ) : (
+          <Loading />
+        )}
+      </div>
     </>
   );
 };

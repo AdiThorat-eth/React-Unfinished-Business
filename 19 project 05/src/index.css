@@ -23,15 +23,15 @@ body {
 }
 
 @font-face {
-  font-family: "Imperium";
-  src: url("/fonts/Imperium.otf");
+  font-family: "Op";
+  src: url("/fonts/one-piece-font.ttf");
 }
 
 @theme {
   --font-HJ: "HJ";
   --font-inter: "inter";
   --font-GT: "GT";
-  --font-Imperium: "Imperium";
+  --font-Op: "Op";
 }
 
 ::-webkit-scrollbar {
