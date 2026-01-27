@@ -16,10 +16,12 @@ const Cards = ({ data, title }) => {
           <h1 className="text-xl text-zinc-200 font-semibold text-center">
             {c.name || c.title || c.original_name || c.original_title}
           </h1>
-          <div className="absolute -right-2 top-[5%] rounded-full text-lg font-semibold bg-yellow-500 w-[6vh] h-[5vh] justify-center items-center text-center py-1">
-            {c.vote_average.toFixed(1)}
-            <sup>%</sup>
-          </div>
+          {c.vote_average && (
+            <div className="absolute -right-2 top-[5%] rounded-full text-lg font-semibold bg-yellow-500 w-[6vh] h-[5vh] justify-center items-center text-center py-1">
+              {c.vote_average.toFixed(1)}
+              <sup>%</sup>
+            </div>
+          )}
         </Link>
       ))}
     </div>
