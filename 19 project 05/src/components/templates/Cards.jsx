@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Cards = ({ data, title }) => {
   return (
-    <div className="flex flex-wrap w-full gap-2 bg-[#1f1e24]">
+    <div className=" flex flex-wrap w-full gap-2 bg-[#1f1e24]">
       {data.map((c, i) => (
-        <Link className="w-[25vh] mx-auto mb-5" key={i}>
+        <Link className="relative w-[25vh] mx-auto mb-5" key={i}>
           <img
             className="h-[40vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)]"
             src={`https://image.tmdb.org/t/p/original/${
@@ -16,6 +16,10 @@ const Cards = ({ data, title }) => {
           <h1 className="text-xl text-zinc-200 font-semibold text-center">
             {c.name || c.title || c.original_name || c.original_title}
           </h1>
+          <div className="absolute -right-2 top-[5%] rounded-full text-lg font-semibold bg-yellow-500 w-[6vh] h-[5vh] justify-center items-center text-center py-1">
+            {c.vote_average.toFixed(1)}
+            <sup>%</sup>
+          </div>
         </Link>
       ))}
     </div>

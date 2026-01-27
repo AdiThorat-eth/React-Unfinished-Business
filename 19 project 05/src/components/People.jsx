@@ -1,43 +1,44 @@
-import axios from "../utils/axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Loading from "./Loading";
 import Topnav from "./templates/Topnav";
 import Dropdown from "./templates/Dropdown";
-import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "../utils/axios";
 import Cards from "./templates/Cards";
+import Loading from "./Loading";
 
-const Popular = () => {
+import InfiniteScroll from "react-infinite-scroll-component";
+
+const People = () => {
   const navigate = useNavigate();
-  const [category, setCategory] = useState("movie");
-  const [popular, setPopular] = useState([]);
+  const [category, setCategory] = useState("popular");
+  const [people, setPeople] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  document.title = "YoYo Movies | Popular " + category.toUpperCase();
+  document.title = "YoYo Movies | People " + category.toUpperCase();
 
-  const GetPopular = async () => {
+  const GetPeople = async () => {
     try {
-      const { data } = await axios.get(`${category}/popular?page=${page}`);
-
+      const { data } = await axios.get(`/person/${category}?page=${page}`);
       if (data.results.length > 0) {
-        setPopular((prevState) => [...prevState, ...data.results]);
+        setPeople((prevState) => [...prevState, ...data.results]);
         setPage(page + 1);
       } else {
         setHasMore(false);
       }
+      // setpeople(data.results);
     } catch (error) {
       console.log("error: ", error);
     }
   };
 
   const refreshHandler = async () => {
-    if (popular.length === 0) {
-      GetPopular();
+    if (people.length === 0) {
+      GetPeople();
     } else {
       setPage(1);
-      setPopular([]);
-      GetPopular();
+      setPeople([]);
+      GetPeople();
     }
   };
 
@@ -45,7 +46,7 @@ const Popular = () => {
     refreshHandler();
   }, [category]);
 
-  return popular.length > 0 ? (
+  return people.length > 0 ? (
     <div className="w-screen min-h-screen p-10 bg-[#1f1e24]">
       <div className="w-full flex items-center">
         <h1 className="text-2xl text-zinc-400 font-semibold">
@@ -53,23 +54,18 @@ const Popular = () => {
             onClick={() => navigate(-1)}
             className="ri-arrow-left-line mr-2 cursor-pointer hover:text-[#6556CD]"
           ></i>
-          Popular
+          People
         </h1>
         <Topnav />
-        <Dropdown
-          title="Category"
-          options={["movie", "tv"]}
-          func={(e) => setCategory(e.target.value)}
-        />
       </div>
 
       <InfiniteScroll
-        dataLength={popular.length}
-        next={GetPopular}
+        dataLength={people.length}
+        next={GetPeople}
         hasMore={hasMore}
         loader={<Loading />}
       >
-        <Cards data={popular} title={category} />
+        <Cards data={people} title={category} />
       </InfiniteScroll>
     </div>
   ) : (
@@ -77,4 +73,4 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default People;
