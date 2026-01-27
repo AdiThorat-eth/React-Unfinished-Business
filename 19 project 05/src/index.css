@@ -5,6 +5,7 @@ body {
   /* overflow-x: hidden; */
   font-family: var(--font-inter);
   font-weight: 600;
+  background-color: #1f1e24;
 }
 
 @font-face {
