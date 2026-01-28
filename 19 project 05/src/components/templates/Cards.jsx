@@ -6,7 +6,7 @@ const Cards = ({ data, title }) => {
     <div className=" flex flex-wrap w-full gap-2 bg-[#1f1e24]">
       {data.map((c, i) => (
         <Link
-          to={`/${c.media_type || c.title}/details/${c.id}`}
+          to={`/${c.media_type || title.toLowerCase()}/details/${c.id}`}
           className="relative w-[25vh] mx-auto mb-5"
           key={i}
         >
