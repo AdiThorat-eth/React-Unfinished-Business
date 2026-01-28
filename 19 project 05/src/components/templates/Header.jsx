@@ -19,7 +19,13 @@ const Header = ({ data }) => {
       <h1 className="w-4/5 text-5xl font-bold text-white tracking-[3px]"></h1>
       <p className="text-white text-md w-4/5 mb-5">
         {data.overview.slice(0, 200)}...
-        <Link className="text-blue-400"> more</Link>
+        <Link
+          to={`/${data.media_type || data.title}/details/${data.id}`}
+          className="text-blue-400"
+        >
+          {" "}
+          more
+        </Link>
       </p>
       <p className="">
         <i className="ri-megaphone-fill mr-2 text-yellow-500"></i>

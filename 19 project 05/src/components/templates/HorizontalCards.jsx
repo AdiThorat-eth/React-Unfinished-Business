@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HorizontalCards = ({ data }) => {
   return (
     <div className="w-full h-[50vh] flex overflow-x-scroll p-5">
       {data.map((d, i) => (
-        <div key={i} className="min-w-[15%] mr-5">
+        <Link
+          to={`/${d.media_type || d.title}/details/${d.id}`}
+          key={i}
+          className="min-w-[15%] mr-5"
+        >
           <img
             className="w-full h-[80%] object-cover"
             src={`https://image.tmdb.org/t/p/original/${
@@ -19,7 +24,7 @@ const HorizontalCards = ({ data }) => {
               {d.overview.slice(0, 200)}...
               <span className="text-blue-400"> more</span>
             </p> */}
-        </div>
+        </Link>
       ))}
     </div>
   );

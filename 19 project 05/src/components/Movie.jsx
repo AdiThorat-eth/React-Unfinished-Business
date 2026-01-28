@@ -70,7 +70,7 @@ const Movie = () => {
         hasMore={hasMore}
         loader={<Loading />}
       >
-        <Cards data={movie} title={category} />
+        <Cards data={movie} title="Movie" />
       </InfiniteScroll>
     </div>
   ) : (
