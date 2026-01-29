@@ -14,7 +14,7 @@ const Header = ({ data }) => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
-      className="w-full h-[50vh] m-auto rounded-2xl flex flex-col justify-end p-5 items-start"
+      className="w-full h-[60vh] m-auto rounded-2xl flex flex-col justify-end p-5 items-start"
     >
       <h1 className="w-4/5 text-5xl font-bold text-white tracking-[3px]"></h1>
       <p className="text-white text-md w-4/5 mb-5">

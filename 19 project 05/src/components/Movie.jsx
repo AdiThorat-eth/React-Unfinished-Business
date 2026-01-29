@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import Topnav from "./templates/Topnav";
 import Dropdown from "./templates/Dropdown";
 import axios from "../utils/axios";

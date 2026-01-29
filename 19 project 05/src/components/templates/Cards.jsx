@@ -21,7 +21,7 @@ const Cards = ({ data, title }) => {
             {c.name || c.title || c.original_name || c.original_title}
           </h1>
           {c.vote_average && (
-            <div className="absolute -right-2 top-[5%] rounded-full text-lg font-semibold bg-yellow-500 w-[6vh] h-[5vh] justify-center items-center text-center py-1">
+            <div className="absolute -right-2 top-[5%] rounded-full text-lg font-semibold bg-yellow-500 w-[6vh] h-[6vh] justify-center items-center text-center pt-2">
               {c.vote_average.toFixed(1)}
               <sup>%</sup>
             </div>

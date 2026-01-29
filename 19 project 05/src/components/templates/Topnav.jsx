@@ -43,6 +43,7 @@ const Topnav = () => {
         {searches &&
           searches.map((s, index) => (
             <Link
+              to={`/${s.media_type}/details/${s.id}`}
               key={index}
               className="w-full p-4 flex justify-start items-center border-b-2 border-white text-zinc-700 font-semibold hover:text-black hover:bg-zinc-100"
             >

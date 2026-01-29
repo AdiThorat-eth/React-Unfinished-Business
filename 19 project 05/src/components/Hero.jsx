@@ -41,7 +41,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex overflow-y-scroll">
+      <div className="w-full h-screen flex overflow-y-auto">
         {wallpaper && trending ? (
           <>
             <Sidenav />
@@ -59,7 +59,7 @@ const Hero = () => {
                 />
               </div>
 
-              <HorizontalCards data={trending} />
+              <HorizontalCards h={`40vh`} h2={`50vh`} data={trending} />
             </div>
           </>
         ) : (

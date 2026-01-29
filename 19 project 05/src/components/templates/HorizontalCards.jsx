@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HorizontalCards = ({ data }) => {
+const HorizontalCards = ({ data, h, h2 }) => {
   return (
-    <div className="w-full h-[50vh] flex overflow-x-scroll p-5">
+    <div
+      className={`w-full h-[${h2}] flex overflow-x-scroll pt-5 overflow-y-hidden`}
+    >
       {data.map((d, i) => (
         <Link
           to={`/${d.media_type || d.title}/details/${d.id}`}
@@ -11,13 +13,13 @@ const HorizontalCards = ({ data }) => {
           className="min-w-[15%] mr-5"
         >
           <img
-            className="w-full h-[80%] object-cover"
+            className={`w-full h-[${h}] object-cover`}
             src={`https://image.tmdb.org/t/p/original/${
               d.poster_path || d.profile_path || d.backdrop_path
             }`}
             alt=""
           />
-          <h1 className="w-full h-[15%] text-sm font-bold text-white tracking-[3px] text-center">
+          <h1 className="w-full h-[20vh] text-sm font-bold text-white tracking-[3px] text-center">
             {d.name || d.title || d.original_name || d.original_title}
           </h1>
           {/* <p className="text-white text-md w-4/5 mb-5">
