@@ -12,18 +12,25 @@ export const asyncLoadMovie = (id) => async (dispatch, getState) => {
     const videos = await axios.get(`/movie/${id}/videos`);
     const watchProvider = await axios.get(`/movie/${id}/watch/providers`);
 
+    // Find trailer, fallback to first video if no trailer exists
+    const trailer =
+      videos.data.results.find((m) => m.type === "Trailer") ||
+      videos.data.results[0];
+
     let theUltimateDetails = {
       details: details.data,
       externalId: externalId.data,
       recommendations: recommendations.data.results,
       similar: similar.data.results,
       translations: translations.data.translations.map((t) => t.english_name),
-      videos: videos.data.results.find((m) => m.type === "Trailer"),
+      videos: trailer, // This will now have the full video object with key property
       watchProvider: watchProvider.data.results.IN,
     };
+
     dispatch(loadMovie(theUltimateDetails));
     console.log(theUltimateDetails);
+    console.log("Video Key:", trailer?.key); // Debug log
   } catch (error) {
-    console.log("Error");
+    console.log("Error:", error);
   }
 };

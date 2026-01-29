@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncLoadMovie, removeMovie } from "../store/actions/MovieActions";
-import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useLocation,
+  Outlet,
+} from "react-router-dom";
 import Loading from "./Loading";
 import HorizontalCards from "./templates/HorizontalCards";
 
@@ -28,7 +34,7 @@ const MovieDetails = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
-      className="w-screen h-[135vh] p-10 overflow-y-hidden"
+      className="w-screen h-[135vh] p-10 overflow-y-hidden relative"
     >
       {/* part 1 navigation */}
       <nav className="w-full text-zinc-100 flex gap-10 text-2xl">
@@ -78,7 +84,7 @@ const MovieDetails = () => {
           </h1>
 
           <div className="flex">
-            <span className="absolute left-[16%] top-[21.5%] rounded-full text-lg font-semibold bg-yellow-500 w-[7vh] h-[7vh] justify-center items-center text-center pt-3">
+            <span className="absolute left-[16%] top-[16%] rounded-full text-lg font-semibold bg-yellow-500 w-[7vh] h-[7vh] justify-center items-center text-center pt-3">
               {info.details.vote_average.toFixed(1)}
               <sup>%</sup>
             </span>
@@ -180,6 +186,7 @@ const MovieDetails = () => {
           info.recommendations.length > 0 ? info.recommendations : info.similar
         }
       />
+      <Outlet />
     </div>
   ) : (
     <Loading />

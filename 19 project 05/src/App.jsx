@@ -9,6 +9,7 @@ import People from "./components/People";
 import MovieDetails from "./components/MovieDetails";
 import TvDetails from "./components/TvDetails";
 import PeopleDetails from "./components/PeopleDetails";
+import Trailer from "./components/templates/Trailer";
 
 const App = () => {
   return (
@@ -19,7 +20,9 @@ const App = () => {
         <Route path="/popular" element={<Popular />} />
 
         <Route path="/movie" element={<Movie />} />
-        <Route path="/movie/details/:id" element={<MovieDetails />} />
+        <Route path="/movie/details/:id" element={<MovieDetails />}>
+          <Route path="/movie/details/:id/trailer" element={<Trailer />} />
+        </Route>
 
         <Route path="/tv" element={<Tv />} />
         <Route path="/tv/details/:id" element={<TvDetails />} />
@@ -38,3 +41,5 @@ export default App;
 // 24.2 12:59
 // 24.3 0:0
 // 24.3 1:19:41
+// 24.3 2:15:32
+//
