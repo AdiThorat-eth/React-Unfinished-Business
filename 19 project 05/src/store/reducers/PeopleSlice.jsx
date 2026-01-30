@@ -17,5 +17,5 @@ export const PeopleSlice = createSlice({
   },
 });
 
-export const { loadpeople, removepeople } = PeopleSlice.actions;
+export const { loadPeople, removePeople } = PeopleSlice.actions;
 export default PeopleSlice.reducer;

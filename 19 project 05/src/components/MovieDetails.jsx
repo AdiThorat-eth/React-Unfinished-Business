@@ -180,16 +180,20 @@ const MovieDetails = () => {
       </div>
 
       {/* part 4 recommendations and similar stuff */}
-      <h1 className="text-2xl font-semibold mt-5">
-        Recommendation & similar stuff
-      </h1>
-      <HorizontalCards
-        h={`50vh`}
-        h2={`60vh`}
-        data={
-          info.recommendations.length > 0 ? info.recommendations : info.similar
-        }
-      />
+      <div>
+        <h1 className="text-2xl font-semibold mt-5">
+          Recommendation & similar stuff
+        </h1>
+        <HorizontalCards
+          h={`50vh`}
+          h2={`60vh`}
+          data={
+            info.recommendations.length > 0
+              ? info.recommendations
+              : info.similar
+          }
+        />
+      </div>
       <Outlet />
     </div>
   ) : (
