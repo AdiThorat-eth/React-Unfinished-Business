@@ -1,16 +1,16 @@
-export { removeMovie } from "../reducers/MovieSlice";
+export { removeTv } from "../reducers/TvSlice";
 import axios from "../../utils/axios";
-import { loadMovie } from "../reducers/MovieSlice";
+import { loadTv } from "../reducers/TvSlice";
 
-export const asyncLoadMovie = (id) => async (dispatch, getState) => {
+export const asyncLoadTv = (id) => async (dispatch, getState) => {
   try {
-    const details = await axios.get(`/movie/${id}`);
-    const externalId = await axios.get(`/movie/${id}/external_ids`);
-    const recommendations = await axios.get(`/movie/${id}/recommendations`);
-    const similar = await axios.get(`/movie/${id}/similar`);
-    const translations = await axios.get(`/movie/${id}/translations`);
-    const videos = await axios.get(`/movie/${id}/videos`);
-    const watchProvider = await axios.get(`/movie/${id}/watch/providers`);
+    const details = await axios.get(`/tv/${id}`);
+    const externalId = await axios.get(`/tv/${id}/external_ids`);
+    const recommendations = await axios.get(`/tv/${id}/recommendations`);
+    const similar = await axios.get(`/tv/${id}/similar`);
+    const translations = await axios.get(`/tv/${id}/translations`);
+    const videos = await axios.get(`/tv/${id}/videos`);
+    const watchProvider = await axios.get(`/tv/${id}/watch/providers`);
 
     // Find trailer, fallback to first video if no trailer exists
     const trailer =
@@ -27,7 +27,7 @@ export const asyncLoadMovie = (id) => async (dispatch, getState) => {
       watchProvider: watchProvider.data.results.IN,
     };
 
-    dispatch(loadMovie(theUltimateDetails));
+    dispatch(loadTv(theUltimateDetails));
     console.log(theUltimateDetails);
     // console.log("Video Key:", trailer?.key); // Debug log
   } catch (error) {

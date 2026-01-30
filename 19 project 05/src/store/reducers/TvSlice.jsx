@@ -17,5 +17,5 @@ export const TvSlice = createSlice({
   },
 });
 
-export const { loadtv, removetv } = TvSlice.actions;
+export const { loadTv, removeTv } = TvSlice.actions;
 export default TvSlice.reducer;

@@ -12,6 +12,8 @@ import Loading from "./Loading";
 import HorizontalCards from "./templates/HorizontalCards";
 
 const MovieDetails = () => {
+  document.title = "YoYo Movies | Movies ";
+
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ const MovieDetails = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
-      className="w-screen h-[135vh] p-10 overflow-y-hidden relative"
+      className="w-screen h-[137vh] p-10 overflow-y-hidden relative"
     >
       {/* part 1 navigation */}
       <nav className="w-full text-zinc-100 flex gap-10 text-2xl">
@@ -95,10 +97,12 @@ const MovieDetails = () => {
                 <h1>{info.details.release_date}</h1>
               </div>
               <div className="flex ml-6 mt-5 flex-col gap-2">
-                <h1 className="font-semibold">
+                <h1 className="font-semibold bg-[#6556CD]/30 rounded-lg px-2 text-center py-1">
                   {info.details.genres.map((g, i) => g.name).join(", ")}
                 </h1>
-                <h1>{info.details.tagline}</h1>
+                <div className="max-w-70 ">
+                  <h1>{info.details.tagline}</h1>
+                </div>
                 {/* <p className="text-sm">{info.details.overview}</p> */}
                 <Link
                   className="px-4 py-2 rounded-lg bg-[#6556CD] w-fit mt-2"

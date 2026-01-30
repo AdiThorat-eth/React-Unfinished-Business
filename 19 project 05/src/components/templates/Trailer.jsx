@@ -9,8 +9,8 @@ const Trailer = () => {
   const category = pathname.includes("movie") ? "movie" : "tv";
   const ytVid = useSelector((state) => state[category].info.videos);
 
-  console.log("Video object:", ytVid);
-  console.log("Video key:", ytVid?.key);
+  // console.log("Video object:", ytVid);
+  // console.log("Video key:", ytVid?.key);
 
   const videoKey = ytVid?.key;
   const videoUrl = videoKey
