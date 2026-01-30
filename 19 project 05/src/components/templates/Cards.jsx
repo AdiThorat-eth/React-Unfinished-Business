@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import noimage from "../../../public/images/ni.webp";
 
 const Cards = ({ data, title }) => {
   return (
@@ -12,9 +13,13 @@ const Cards = ({ data, title }) => {
         >
           <img
             className="h-[40vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)]"
-            src={`https://image.tmdb.org/t/p/original/${
+            src={
               c.poster_path || c.profile_path || c.backdrop_path
-            }`}
+                ? `https://image.tmdb.org/t/p/original/${
+                    c.poster_path || c.profile_path || c.backdrop_path
+                  }`
+                : noimage
+            }
             alt=""
           />
           <h1 className="text-xl text-zinc-200 font-semibold text-center">
