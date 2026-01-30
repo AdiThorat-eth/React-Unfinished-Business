@@ -41,7 +41,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex overflow-y-auto">
+      <div className="w-full h-[100vh] flex overflow-y-auto">
         {wallpaper && trending ? (
           <>
             <Sidenav />

@@ -19,7 +19,7 @@ const HorizontalCards = ({ data, h, h2 }) => {
             }`}
             alt=""
           />
-          <h1 className="w-full h-[20vh] text-sm font-bold text-white tracking-[3px] text-center">
+          <h1 className="w-full text-sm font-bold text-white tracking-[3px] text-center mb-2">
             {d.name || d.title || d.original_name || d.original_title}
           </h1>
           {/* <p className="text-white text-md w-4/5 mb-5">
