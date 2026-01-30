@@ -34,7 +34,7 @@ const MovieDetails = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
-      className="w-screen h-[130vh] p-10 overflow-y-hidden relative"
+      className="w-screen h-[135vh] p-10 overflow-y-hidden relative"
     >
       {/* part 1 navigation */}
       <nav className="w-full text-zinc-100 flex gap-10 text-2xl">
